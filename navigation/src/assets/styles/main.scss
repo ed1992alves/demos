@@ -1,0 +1,158 @@
+$white: #ffffff;
+$black: #000000;
+$atmo1: #F9F9F9;
+$atmo2: #F5F5F5;
+$atmo3: #F0F0F0;
+$atmo4: #DEDEDE;
+$atmo5: #BCBCBC;
+$atmo6: #999999;
+$atmo7: #414141;
+$acce2: #146BD2;
+$light-blue: #4389DB;
+$red: #CC0000;
+$font-size-big-title: 32px;
+$font-size-title: 22px;
+$font-size-normal: 14px;
+$font-size-info: 12px;
+$s-space: 10px;
+$m-space: 20px;
+$l-space: 30px;
+$xl-space: 60px;
+$xxl-space: 90px;
+
+@import 'navigation';
+@import 'secondaryNavigation';
+
+%prevent_copies{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/OpenSans-Regular.ttf'), local('Open Sans Regular'), local('OpenSans-Regular');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/fonts/OpenSans-SemiBold.ttf'), local('Open Sans Semibold'), local('OpenSans-Semibold');
+}
+
+@mixin user_icons($position) {
+    width:32px;
+    height:32px;
+    margin-right:10px;
+    background: url(./assets/images/nav_icons.svg) no-repeat $position 0px;
+}
+
+body{  
+    letter-spacing: 0.02em;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size:14px;
+    color: $atmo7;
+    min-width:1360px;
+    overflow-x: hidden;
+    margin:0px;
+}
+
+.container{
+    margin: auto;
+    max-width: 100%;
+    position: relative;
+    width: 1200px;
+    background-color: #f9f9f9;
+}
+
+button:focus{
+    outline:none;
+}
+
+.buttons{
+    position:absolute;
+    right:20px;
+    width:auto;
+    top:145px;
+}
+
+img{
+    width:1200px;
+}
+
+.button {
+    position:absolute; 
+    top:100px;
+    left:30px;
+    
+    button{
+        height: 60px;
+        line-height: 14px;
+        font-size: 14px;
+        background-color: transparent;
+        padding-left: 23px;
+        padding-right: 23px;
+        border: 1px solid $red;
+        color: $red;
+        font-weight: 600;
+        width:auto;
+        line-height:60px;
+        background-color:white;
+        cursor:pointer;
+        font-family: 'Open Sans', sans-serif !important;
+
+        &.selected{
+            background-color: $red;
+            border: 1px solid white; 
+            color:white;
+        }
+    }
+}
+
+.info-text {
+    top: 100px;
+    left: 30px;
+    line-height: 14px;
+    font-size: 14px;
+    background-color: #fff;
+    padding-left: 23px;
+    padding-right: 23px;
+    border: 1px solid #c00;
+    color: #c00;
+    font-weight: 600;
+    width: auto;
+    line-height: 60px;
+    font-family: Open Sans,sans-serif!important;
+}
+
+
+/******************************************************** NAVIGATION ********************************************************/
+
+
+    .nav_container{
+        width:100%;
+        position: relative;
+        top: -40px;
+        display:flex;
+        justify-content: center;
+        margin-bottom:0px;
+        transition: margin-bottom 0.2s linear; 
+    }
+
+    @-moz-document url-prefix() { 
+        .nav_container {
+            top: -41px;
+        }
+    }
+
+    .nav_container.open{
+        margin-bottom:40px;
+        transition: margin-bottom 0.2s linear; 
+    }

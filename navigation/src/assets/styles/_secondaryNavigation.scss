@@ -1,0 +1,52 @@
+.sec_nav_container{
+    position:absolute;
+    top:40px;
+    width:100%; 
+    background-color: $atmo2;
+    display: flex;
+    justify-content: center;
+    height:0px;
+    overflow: hidden;
+    transition: height 0.2s linear;
+
+    &.show{
+        height:36px;
+        transition: height 0.2s linear;
+    }
+
+    .option{
+        padding-left:20px;
+        padding-right:20px;
+        line-height:36px;
+        height:36px;
+        z-index:2;
+
+        &:hover{
+            cursor:pointer;
+            background-color: $atmo3;
+        }
+
+        &:active{
+            line-height:37px;
+        }
+
+        &.selected{
+            color:$red;
+            cursor:default;
+            text-shadow: -0.2px 0 $red, 0.2px 0 $red;
+
+            &:hover{
+                background-color: transparent;
+            }
+        }
+    }
+
+    .selected_secondary_border{
+        position: absolute;
+        top: 0px;
+        background-color: $atmo1;
+        height: 100%;
+        z-index:1;
+        transition: all 0.5s cubic-bezier(.52,1.03,.42,.93);
+    }
+}
