@@ -1,0 +1,308 @@
+
+/*********************************** DATE PICKER ******************************************/
+
+@mixin fadeOut($opacity, $visibility, $time1, $time2) {
+    opacity: $opacity;
+    visibility: $visibility;
+    transition: visibility $time1 linear $time2, opacity $time1 linear $time2;
+}
+
+@mixin fadeIn($opacity, $visibility, $time1, $time2) {
+    opacity: $opacity;
+    visibility: $visibility;
+    transition: opacity $time1 linear $time2;
+}
+
+.label{
+    display:block;
+    position:relative;
+    @extend %label-text;
+
+    + .datepicker-container {
+        width:320px;
+        background:white;
+        border:1px solid $atmo6;
+        cursor:pointer;
+        z-index: 10;
+
+        &.closing{
+            border: 1px solid $acce1;
+            border-bottom:0px;
+        }
+
+
+        &:hover{
+            border: 1px solid $acce1;
+        }
+
+        &.open{
+            border: 1px solid $acce1;
+            border-bottom:0px;
+            cursor:default;
+
+            input{
+                cursor:default;
+            }
+        }
+    
+    
+        input{
+            line-height: 32px;
+            height: 32px;
+            outline: none;
+            width: 100%;
+            background-color:transparent;
+            padding:0px;
+            text-indent:10px;
+            @extend %normal-text;
+            border:0px; 
+            z-index:9;
+            cursor:pointer;
+        }
+
+       .calendar_img{
+            position:absolute; 
+            content:"";
+            width:32px;
+            height:32px;
+            background: url('./assets/images/datepicker.svg') no-repeat 0px 0;
+            background-size: cover;
+            right:1px;
+            top:21px;
+        }
+
+    }
+}
+
+
+#datepicker {
+    position:absolute;
+    width:320px; 
+    border:0px;
+    height:0px;
+    background-color: white;
+    transition: border 0.01s linear 0.5s, height 0.5s linear;
+    border:0px solid black;
+
+
+    &.open{
+        transition: height 0.5s linear;
+        border:1px solid $acce1;
+        border-top:0px;
+
+        .controls{
+            @include fadeIn(1, visible, 0s, 0.05s);
+        }
+
+        .ui-datepicker{
+            @include fadeIn(1, visible, 0.05s, 0.4s);
+
+        }
+
+        .selected_date{
+            @include fadeIn(1, visible, 0.05s, 0.15s);
+        }
+
+        .secondary_controls{
+            @include fadeIn(1, visible, 0.05s, 0.2s);
+        }
+
+    }
+
+
+    .ui-datepicker{
+        padding: 20px;
+        padding-bottom: 60px;
+        padding-top: 150px;
+        width:280px;
+        border: 0px solid;
+        border-radius: 0px;
+        z-index: 1;
+        @include fadeOut(0, hidden, 0.05s, 0.01s);
+       background-color:transparent;
+        
+
+        td,th {
+            
+            padding:0px;
+            border:0px;
+
+            a, span {
+            width:40px;
+            height:40px;
+            line-height:40px;
+            text-align: center;
+            padding:0px;
+            border:0px;
+            background-color:transparent;
+
+                &.ui-state-active{
+                    background-color: $acce1;
+                    color:$atmo2;
+                }
+            }
+
+            a:not(.ui-state-active){
+                cursor:pointer; 
+                color: $acce1;
+
+                &:hover{
+                    background-color: $atmo4;
+                    color: $acce1;
+                }
+
+                &:active{
+                    line-height:42px;
+                }
+            }
+        }
+
+        .ui-datepicker-header {
+            display:none;
+        }
+    }
+
+    .selected_date{
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        height: 70px;
+        background-color: $atmo3;
+        width: calc(100% - 40px);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border: 1px solid transparent;
+        box-sizing: border-box;
+        z-index: 2;
+        @include fadeOut(0, hidden, 0.05s, 0.3s);
+
+        &.error{
+            border:1px solid $sema4;
+
+            input{
+                border-bottom:1px solid transparent;
+            }
+        }
+
+        .dayOfWeek{
+            @extend %normal-text;
+            padding-top:5px;
+            padding-bottom:5px;
+            text-indent:10px;
+
+        }
+
+        input{
+            background-color: transparent;
+            outline: none;
+            border: 0px;
+            border-bottom: 1px solid;
+            width:100%;
+            padding:0px;
+            @extend %M-title;
+            text-indent:10px;
+
+        }
+    }
+
+    .secondary_controls{
+        position: absolute;
+        width: calc(100% - 40px);
+        top: 110px;
+        left: 20px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 2;
+        @include fadeOut(0, hidden, 0.05s, 0.2s);
+
+        .change_month, .change_year{
+            display:flex;
+        }
+
+        .month{
+            width:75px;
+            text-align:center;
+            @extend %normal-text;
+            line-height:32px;
+            height:32px;
+            padding-left:5px;
+            padding-right:5px;
+            cursor:default;
+        }
+
+        .year{
+            @extend %normal-text;
+            line-height:32px;
+            height:32px;
+            padding-left:5px;
+            padding-right:5px;
+            cursor:default;
+        }
+
+        button.previous_month, button.previous_year,
+        button.next_month, button.next_year{
+            width:32px;
+            height:32px;
+            padding: 0px;
+            border: 0px;
+            cursor: pointer;
+            outline:none;
+            position:relative;
+
+            &:hover{
+                background-color: $atmo4;
+            }
+
+            &:active{
+                background-position-y: 1px;
+            }
+        }
+
+        button.previous_month, button.previous_year{
+            background: url('./assets/images/datepicker.svg') no-repeat -64px 0;
+            background-size: cover;
+        }
+
+
+        button.next_month, button.next_year{
+            background: url('./assets/images/datepicker.svg') no-repeat  -32px 0px;
+            background-size: cover;
+        }
+    }
+
+    .controls{
+        position:absolute;
+        bottom:20px;
+        display:flex;
+        justify-content: flex-end;
+        width:calc(100% - 20px);
+        z-index: 2;
+        @include fadeOut(0, hidden, 0.05s, 0.35s);
+
+        button:first-child{
+            margin-right:10px;
+        }
+
+        button{
+            border:0px;
+            @extend %hightlited-text;
+            outline:none;
+            cursor:pointer;
+            height:32px;
+            line-height:32px;
+            padding-left:10px;
+            padding-right:10px;
+
+            &:hover{
+                background-color: $atmo4;
+            }
+
+            &:active{
+                line-height:33px;
+            }
+        }
+
+    }
+
+}

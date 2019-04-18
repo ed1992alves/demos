@@ -1,0 +1,159 @@
+$white: #FFFFFF;
+$black: #000000;
+$atmo1: #FFFFFF;
+$atmo2: #F9F9F9;
+$atmo3: #F5F5F5;
+$atmo4: #F0F0F0;
+$atmo5: #DEDEDE;
+$atmo6: #BCBCBC;
+$atmo7: #999999;
+$acce2: #146BD2;
+$acce1: #414141;
+$acce2h: #4389DB;
+$acce3: #CC0000;
+$sema4: #FF5252;
+$font-size-big-title: 32px;
+$font-size-title: 22px;
+$font-size-normal: 14px;
+$font-size-info: 12px;
+$s-space: 10px;
+$m-space: 20px;
+$l-space: 30px;
+$xl-space: 60px;
+$xxl-space: 90px;
+
+%info-text{
+    color: $acce1;
+    font-size:12px;
+    letter-spacing:0.02em;
+    line-height:20px;
+    font-weight:400;
+}
+
+%label-text{
+    color: $acce1;
+    font-size:12px;
+    letter-spacing:0.02em;
+    line-height:20px;
+    font-weight:600;
+}
+
+%normal-text{
+    color: $acce1;
+    font-size:14px;
+    letter-spacing:0.02em;
+    line-height:20px;
+    font-weight:400;
+}
+
+%hightlited-text{
+    color: $acce1;
+    font-size:14px;
+    letter-spacing:0.02em;
+    line-height:20px;
+    font-weight:600;
+}
+
+%S-title{
+    color: $acce1;
+    font-size:22px;
+    letter-spacing:0.02em;
+    line-height:40px;
+    font-weight:400;
+}
+
+%M-title{
+    color: $acce1;
+    font-size:22px;
+    letter-spacing:0.02em;
+    line-height:40px;
+    font-weight:600;
+}
+
+
+%L-title{
+    color: $acce1;
+    font-size:32px;
+    letter-spacing:0.02em;
+    line-height:40px;
+    font-weight:400;
+}
+
+%XL-title{
+    color: $acce1;
+    font-size:32px;
+    letter-spacing:0.02em;
+    line-height:40px;
+    font-weight:600;
+}
+
+@import 'datePicker';
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/OpenSans-Regular.ttf'), local('Open Sans Regular'), local('OpenSans-Regular');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/fonts/OpenSans-SemiBold.ttf'), local('Open Sans Semibold'), local('OpenSans-Semibold');
+}
+
+body{  
+    letter-spacing: 0.02em;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size:14px;
+    color: $acce1;
+    min-width:1200px;
+    overflow-x: scroll;
+    margin:0px;
+}
+
+.container{
+    margin:auto;
+    max-width: 100%;
+    position: relative;
+    width:1200px;
+    background-color: $atmo2;
+
+    & > object{
+        pointer-events: none;
+    }
+}
+
+.bold{
+    font-weight:600;
+}
+
+.button {
+    position: absolute;
+    top: 140px;
+    right: 30px;
+}
+
+.info-text {
+    top: 100px;
+    left: 30px;
+    line-height: 14px;
+    font-size: 14px;
+    background-color: #fff;
+    padding-left: 23px;
+    padding-right: 23px;
+    border: 1px solid $acce3;
+    color: $acce3;
+    font-weight: 600;
+    width: auto;
+    line-height: 60px;
+    font-family: Open Sans,sans-serif!important;
+}
+
+.date_picker{
+    margin-bottom:20px;
+    width:322px;
+    padding-left:30px;
+    position:relative;
+}
