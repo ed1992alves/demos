@@ -1,0 +1,222 @@
+:root {
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-atmo1: #F9F9F9;
+    --color-atmo2: #F5F5F5;
+    --color-atmo3: #F0F0F0;
+    --color-atmo4: #DEDEDE;
+    --color-atmo5: #BCBCBC;
+    --color-atmo6: #999999;
+    --color-atmo7: #414141;
+    --color-acce2: #146BD2;
+    --color-light-blue: #4389DB;
+    --color-red: #CC0000;
+    --font-size-big-title: 32px;
+    --font-size-title: 22px;
+    --font-size-normal: 14px;
+    --font-size-info: 12px;
+    --s-space: 10px;
+    --m-space: 20px;
+    --l-space: 30px;
+    --xl-space: 60px;
+    --xxl-space: 90px;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/OpenSans-Regular.ttf'), local('Open Sans Regular'), local('OpenSans-Regular');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/OpenSans-SemiBold.ttf'), local('Open Sans Semibold'), local('OpenSans-Semibold');
+}
+
+
+body{  
+    letter-spacing: 0.02em;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size:14px;
+    color: var(--color-atmo7);
+    min-width:1200px;
+    overflow-x: scroll;
+}
+
+body:after{
+    position: absolute;
+    content: "";
+    top: 0px;
+    height: 40px;
+    width: 1200px;
+    max-width:1200px;
+    left: calc((100vw - 1200px)/2);
+    background-image: url(images/header.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 10000;
+}
+
+.container{
+    width: 1200px !important;
+    left: calc((100vw - 1200px)/2);
+    position: absolute;
+    background-image: url("images/background.svg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    height:1600px; 
+}
+
+@media only screen and (max-width: 1200px) {
+    .container, 
+    body:after {
+     left:0px;
+    }
+  }
+
+button:first-child{
+    margin-right:20px;
+}
+
+button, 
+button:hover:active{
+    height:60px;
+    line-height:14px;
+    font-size:14px;
+    background-color:transparent;
+    padding-left:23px;
+    padding-right:23px;
+    padding-top:10px;
+    padding-bottom:10px;
+    border: 1px solid var(--color-red);
+    color: var(--color-red);
+    font-weight: 600;
+}
+
+button:hover{
+    cursor:pointer;
+    background-color:var(--color-red);
+    color: white;
+}
+
+button:focus{
+    outline:none;
+}
+
+button.disabled{
+    cursor:not-allowed;
+    pointer-events: none;
+    color: var(--color-atmo6);
+    background-color: var(--color-atmo3);
+    border:1px solid transparent;
+}
+
+.info-text{
+    top:153px;
+    right: 295px;
+    position:absolute; 
+    font-size:12px; 
+    color: var(--color-atmo7);
+}
+
+.buttons{
+    position:absolute;
+    right:40px;
+    width:auto;
+    top:130px;
+}
+
+.notification-banner{
+    left: calc((100% - 1200px)/2);
+    margin-left:10px;
+    margin-right:10px;
+    width: calc(100% - 20px) !important;
+}
+
+.notification-bar,
+.notification-banner{
+    height:52px;
+    line-height:52px;
+    transition: top 0.5s cubic-bezier(.36,.37,.4,1.25);
+    top:60px;
+    position:absolute; 
+    
+}
+
+.notification-bar{
+    right:10px;
+    transition: right 0.2s 0.5s cubic-bezier(.05,.35,.16,1.93), width 0.5s linear;
+    text-indent:20px;
+    width:270px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.notification-bar.hidden{
+    right:0px;
+    width:0px;
+    padding:0px;
+    transition: right 0.2s cubic-bezier(.38,-0.77,.63,-0.45), width 0.5s 0.2s linear;
+   
+}
+
+.notification-banner.success,
+.notification-bar.success{
+    background-color: #DFECD1;
+}
+
+.notification-banner.info, 
+.notification-bar.info{
+    background-color: #CFE0F5;
+}
+
+
+.notification-banner .icon,
+.notification-banner .close{
+    width:32px;
+    height:32px;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:10px;
+    float:left;
+}
+
+.notification-banner .close{
+    cursor:pointer;
+}
+
+.notification-banner .icon{
+    background-image: url("images/success.svg");
+    background-repeat: no-repeat;
+}
+
+.notification-banner .close{
+    background-image: url("images/close.svg");
+    background-repeat: no-repeat;
+    float:right;
+    margin-right:10px;
+}
+
+.notification-bar .icon{
+    background-image: url("images/info.svg");
+    background-repeat: no-repeat;
+    width:32px;
+    height:32px;
+    margin-top:10px;
+    margin-left:10px;
+    float:left;
+}
+
+.notification-banner.hidden{
+    top:-60px;
+    transition: top 1.5s;
+}
+
+
+.notification-banner .content{
+    width:auto;
+    float:left;
+}

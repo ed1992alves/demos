@@ -1,0 +1,174 @@
+{
+    "items1": [
+        { 
+            "value": "Minor",
+            "selected": true
+        },
+        { 
+            "value": "Safe",
+            "selected": false
+        },
+        { 
+            "value": "Warming",
+            "selected": false
+        },
+        { 
+            "value": "Critical",
+            "selected": false
+        },
+        { 
+           "value": "Catastrophical",
+            "selected": false
+        }
+    ],
+    "items2": [
+        { 
+            "value": "Azerbaijan",
+            "selected": true,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Belarus",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Botswana",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Cuba",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Estonia",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Guatemala",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Honduras",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Iceland",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Lebanon",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Mexico",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Nigeria",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Poland",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Portugal",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Somalia",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Sudan",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Uganda",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        },
+        { 
+            "value": "Zambia",
+            "selected": false,
+            "visibility": true,
+            "altered": false
+        }
+    ],
+    "priority": [
+        { 
+            "value": "Critical",
+            "selected": true
+        },
+        { 
+            "value": "Major",
+            "selected": false
+        },
+        { 
+            "value": "Medium",
+            "selected": false
+        },
+        { 
+            "value": "Minor",
+            "selected": false
+        }
+    ],
+    "items4": [
+        { 
+            "value": "Normal",
+            "selected": true
+        },
+        { 
+            "value": "Extraordinary",
+            "selected": false
+        }
+    ],
+    "sortBy": [
+        { 
+            "value": "Status",
+            "selected": true
+        },
+        { 
+            "value": "Severity",
+            "selected": false
+        },
+        { 
+            "value": "Priority",
+            "selected": false
+        },
+        { 
+            "value": "Event Type",
+            "selected": false
+        }
+    ]
+}

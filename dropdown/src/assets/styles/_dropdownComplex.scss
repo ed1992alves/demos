@@ -1,0 +1,279 @@
+%element-list-checkbox{
+    position: absolute; 
+    left:8px;
+    top:8px;
+    width: 16px;
+    height: 16px;
+    content:"";
+    border:1px solid $color-atmo7;
+    transition: all 250ms cubic-bezier(.4,.0,.23,1);
+    box-sizing: border-box;
+}
+
+%check-animation{
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-right: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    top: 17px;
+    left: 11px;
+    height:0px;
+    width:0px;
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    transform-origin: 0% 100%;
+    animation: checkbox-check 200ms 250ms cubic-bezier(.4,.0,.23,1) forwards;
+}
+
+.dropdown_search{
+    width:261px;
+
+    + .dropdown-list{
+        width:261px; 
+        overflow:hidden;
+
+        .all{
+            @extend %element-list;
+            position:absolute; 
+            top:62px;
+            padding-left: 32px;
+            width:calc(100% - 70px);
+
+            &:after{
+                height:1px;
+                width:8px;
+                top: 16px;
+                left: 12px;
+                content:""; 
+                position:absolute;
+                background-color: $color-atmo7;
+            }
+
+            &.selected{
+                &:before{
+                    border:8px solid $color-atmo7;
+                    animation: shrink-bounce 200ms cubic-bezier(.4,.0,.23,1); 
+                }
+
+                &:after{
+                    @extend %check-animation;
+                }
+            }
+
+            &.none:after{
+                content:"";
+                width:0px;
+            }
+
+            &:before{
+                @extend %element-list-checkbox;
+            }
+
+            &:hover{
+                @extend %element-list-hover;
+            }
+
+
+            &.hidden{
+                display:none;
+            }
+
+            &.hidden + ul{
+                margin-top:72px !important;
+                max-height: calc(100% - 144px);
+            }
+        }
+
+        ul{
+            margin-top:104px !important;
+            margin-bottom:72px !important;
+            max-height: calc(100% - 176px);
+
+            li{
+                padding-left: 32px;
+                position:relative;
+                cursor:pointer;
+
+
+                &:before{
+                    @extend %element-list-checkbox;
+                }
+
+                &.hidden{
+                    display:none;
+                }
+
+                &.selected{
+                    background-color:transparent;
+                    color: $color-atmo7;
+                    
+                    &:before{
+                    border:8px solid $color-atmo7;
+                    animation: shrink-bounce 200ms cubic-bezier(.4,.0,.23,1); 
+                    }
+
+                    &:after{
+                        @extend %check-animation;
+                    }
+
+                    &:hover{
+                        background-color: $color-atmo3; 
+                        cursor:pointer;
+                    }
+
+                    &:active{
+                        line-height:33px;
+                    }
+
+                }
+
+                &.none_results{
+                    padding-left:10px;
+                    cursor:default;
+                    font-size:12px;
+
+                    &:hover{
+                        background-color:transparent;
+                    }
+
+                    &:active{
+                        line-height:32px;
+                    }
+
+                    &:before{
+                        width:0px;
+                        height:0px;
+                        border:0px;
+                    }
+                }
+                
+            }
+        }
+
+        input {
+            font-size:12px;
+            margin-bottom:10px;
+            background-color: $color-atmo2;
+            height:32px;
+            line-height:32px;
+            border:0px;
+            border-bottom: 1px solid $color-atmo5;
+            box-sizing: border-box;
+            text-indent:10px;
+            width:100%;
+            transition: border-bottom 0.2s linear;
+
+            + div.search-icon{
+                background: url(./assets/images/search_icons.svg) no-repeat 0px 0px;
+                width: 32px;
+                height: 32px;
+                background-size:cover;
+                position:absolute; 
+                top:0px;
+                right:0px;
+
+                &.close{
+                    background: url(./assets/images/search_icons.svg) no-repeat -32px 0px;
+                    cursor:pointer;
+                }
+            }
+
+            &:focus{
+                outline:none;
+                border-bottom:1px solid $color-atmo7;
+            } 
+        }
+
+        .input_container{
+            position:absolute;
+            width:calc(100% - 40px);
+            left:20px;
+            right:20px;
+            top:20px;
+        }
+
+        .actionButtons{
+            height:32px;
+            text-align:right;
+            position:absolute;
+            width: calc(100% - 40px);
+            bottom:20px;
+
+            button{
+                height:32px;
+                border:0px;
+                color: $color-atmo7;
+                display:block;
+                float:right;
+                width:auto;
+                padding-left:10px;
+                padding-right:10px;
+                font-size:14px;
+                font-weight:600;
+
+                &:active{
+                    line-height:33px;
+                }
+    
+                &:hover{
+                    background-color: $color-atmo3;
+                    border:0px;
+                    cursor:pointer;
+    
+                    :active{
+                        background-color:transparent;
+                    }
+                }
+    
+                &:focus{
+                    outline:none;
+                } 
+
+                &:last-child{
+                    margin-right:10px;
+                }
+    
+            }
+        }      
+    }
+}
+
+@keyframes shrink-bounce{
+    0%{
+      transform: scale(1);
+    }
+    33%{    
+      transform: scale(.85);
+    }
+    100%{
+      transform: scale(1);    
+    }
+  }
+
+    @keyframes checkbox-check{
+    0%{
+      width: 0;
+      height: 0;
+      transform: rotate(45deg);
+      border-color: $color-atmo1;
+    }
+    26%{
+      width: 5px;
+      height: 0;
+      transform: rotate(45deg);
+      top: 15px;
+    }
+    100%{    
+      width: 5px;
+      height: 10px;    
+      top: 7px;
+      transform: rotate(45deg);
+      border-color: $color-atmo1;
+    }
+}
+
+
+
+

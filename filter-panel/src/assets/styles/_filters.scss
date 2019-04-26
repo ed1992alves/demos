@@ -1,0 +1,167 @@
+/*********************************************** FILTERS **************************************************/
+
+#filters_container{
+
+    display: flex;
+    flex-flow: row wrap;
+    position:relative;
+
+    .filter_results{
+        margin-top:50px;
+        width:calc(50% - 20px); 
+        display:flex; 
+        height:32px;
+        padding-left:30px;
+        margin-bottom:10px;
+
+          > div{
+              flex-direction:row; 
+              align-content: flex-end; 
+              height:32px;
+              line-height:32px;
+          }
+
+          .filter_open{
+            font-size:14px; 
+            font-weight:600;
+            margin-right:10px;
+            padding-left:32px;
+            padding-right:10px;
+            position:relative;
+            cursor:pointer;
+            @extend %prevent_copies;
+
+            &.press{
+                line-height:33px;
+
+                &:after{
+                    top:1px;
+                }
+
+            }
+
+            &:after{
+                background: url('./assets/images/filter.svg');
+                content:""; 
+                position:absolute; 
+                top:0px;
+                left:0px;
+                height: 32px;
+                width: 32px;
+            }
+
+            &:hover{
+                background-color: $color-atmo3;
+            }
+
+            &.highlighting:before{
+                opacity:0.4;
+                content:""; 
+                position:absolute;
+                top:0px;
+                bottom:0px;
+                left:0px;
+                right:0px;
+                background-color: $color-light-blue; 
+            }
+
+          }
+
+          .filter_result{
+            font-size:12px; 
+            font-weight:400;
+            line-height: 34px;
+
+            .number_results{
+                background-color:transparent;
+                transition: background-color 0.5s linear; 
+
+                &.highlighted{
+                    background-color: $color-blue;
+                }
+            }
+            
+          }
+    }
+
+    .filters{
+        box-sizing: border-box;
+        height:90px; 
+        background-color:white; 
+        border-top: 1px solid $color-atmo5;
+        border-bottom: 1px solid $color-atmo5;
+        align-items:center; 
+        display:flex;
+        padding-left:30px;
+        padding-right:30px;
+        width:100%; 
+        transition: height 0.2s linear 0.2s, border 0s linear 0.2s;
+        overflow: hidden;
+
+        > div{
+            transition: opacity 0.15s linear;
+            opacity:1;
+        }
+
+        + .view_options{
+            transition: margin-top 0.2s linear 0s;
+        }
+    }
+
+    .filters.open{
+        height:0px; 
+        border:0px solid $color-atmo5;
+        transition: height 0.2s linear 0s, border 0s linear 0.2s;
+
+        > div{
+            opacity:0;
+        }
+
+        + .view_options{
+            margin-top:-65px;
+            transition: margin-top 0.2s linear 0.2s;
+        }
+    }
+
+    .reset{
+        margin-top: 17px;
+        line-height: 32px;
+        height: 32px;
+        font-weight:600; 
+        cursor:pointer; 
+        font-size:14px;
+        margin-left:auto;
+        padding-left:10px;
+        padding-right:10px;
+        transition:color 0.3s linear;
+
+        &:not(.disabled):hover{
+            background-color: $color-atmo3;
+        }
+
+        &.disabled{
+            color: $color-atmo5;
+            cursor:not-allowed;
+        }
+    }
+
+    .view_options{
+        display:flex; 
+        justify-content:flex-end;
+        width:50%;
+        margin-top:20px; 
+        margin-bottom:20px;
+        align-items: flex-end;
+        margin-left: auto;
+        padding-right:32px;
+        width:calc(50% - 20px); 
+
+        .multibutton_view{
+            padding-top:17px;
+        }
+    }
+
+}
+
+
+

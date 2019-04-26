@@ -1,0 +1,74 @@
+$color-white: #ffffff;
+$color-black: #000000;
+$color-atmo1: #F9F9F9;
+$color-atmo2: #F5F5F5;
+$color-atmo3: #F0F0F0;
+$color-atmo4: #DEDEDE;
+$color-atmo5: #BCBCBC;
+$color-atmo6: #999999;
+$color-atmo7: #414141;
+$color-acce2: #146BD2;
+$color-light-blue: #4389DB;
+$color-blue: #D0E1F6;
+$color-red: #CC0000;
+$font-size-big-title: 32px;
+$font-size-title: 22px;
+$font-size-normal: 14px;
+$font-size-info: 12px;
+$s-space: 10px;
+$m-space: 20px;
+$l-space: 30px;
+$xl-space: 60px;
+$xxl-space: 90px;
+
+@import 'filters';
+@import 'dropdown';
+@import 'dropdownComplex';
+
+%prevent_copies{
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/OpenSans-Regular.ttf'), local('Open Sans Regular'), local('OpenSans-Regular');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    src: url('./assets/fonts/OpenSans-SemiBold.ttf'), local('Open Sans Semibold'), local('OpenSans-Semibold');
+}
+
+body{  
+    letter-spacing: 0.02em;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size:14px;
+    color: $color-atmo7;
+    min-width:1360px;
+    overflow-x: hidden;
+}
+
+.container{
+    margin:auto;
+    max-width: 100%;
+    position: relative;
+    width:1200px;
+    background-color: $color-atmo1;
+
+    & > object{
+        pointer-events: none;
+    }
+}
+
+.bold{
+    font-weight:600;
+}

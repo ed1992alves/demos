@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Notifications motion demo</title>
+
+    <link rel="stylesheet" href="main.css">
+    <!-- <link rel="stylesheet" href="css/loader.css"> -->
+
+    <link rel="icon" type="image/ico" href="img/favicon.ico">
+</head>
+<body>
+        <div class="container">
+                <div class="info-text"> Click to see the notifications behaviour:</div>
+            <div class="buttons">
+                <button>Banner</button>
+                <button>Snack bar</button>
+            </div>
+            <div class="notification-banner success hidden">
+                <div class="icon"></div>
+                <div class="content ">The information was successfully submitted. A new data source was created.</div>
+                <div class="close"></div>       
+            </div>
+    
+            <div class="notification-bar info hidden">This is an information message.</div>
+            
+        </div>
+
+    
+
+    
+</body>
+
+<script>
+
+        var timeOut1 = null;
+        var timeOut2 = null;      
+
+        $(".container" ).click(function(e){
+            clearTimeout(timeOut1);
+            clearTimeout(timeOut2);
+            $( ".notification-banner").addClass("hidden");
+            hideBar();
+        });
+
+        $(".notification-banner .close").click(function() {
+            $( ".notification-banner").addClass("hidden");
+            $("button").removeClass('disabled');
+        });
+
+        $("button:first-child()").click(function(){
+            event.stopPropagation();
+            $("button").addClass('disabled');
+            $( ".notification-banner").removeClass("hidden");
+        });
+
+        $("button:nth-child(2)").click(function(){
+            event.stopPropagation();
+            
+            $("button").addClass('disabled');
+            $( ".notification-bar").removeClass("hidden");
+            $( ".notification-bar").addClass("visible");
+            timeOut1 = setTimeout(function() { 
+                $( ".notification-bar").removeClass("visible");
+                    timeOut2 = setTimeout(function() { 
+                        hideBar();
+                    }, 6000);
+            }, 100);
+        });
+
+        function hideBar(){
+
+                $("button").removeClass('disabled');
+                $( ".notification-bar").removeClass("visible");
+                $( ".notification-bar").addClass("hidden");
+                clearTimeout(timeOut1);
+                clearTimeout(timeOut2);
+
+            
+        }
+
+
+
+</script>
+</html>
