@@ -1,0 +1,188 @@
+
+@mixin container($height) {
+    height: $height;
+    display:flex; 
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    background-color: rgba(240, 240, 240, 0.8);
+    position:absolute;
+    z-index:1;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+
+.loader-global {
+    width: 100%;
+    @include container(1082px);
+
+
+    &.active{
+        opacity:1;
+    }
+    
+    &>span{
+        height: 30px;
+        width: 4px;
+        display: block;
+        float: left;
+        margin: 0 3px;
+        margin-bottom: 0.6em;
+        animation: loader-animation-color 1.2s infinite ease-in-out;
+    }
+
+    span:nth-child(2) {
+        animation-delay: -1s;
+    }
+    
+    span:nth-child(3) {
+        animation-delay: -0.8s;
+    }
+}
+
+.loader-component {
+    width: calc(100% - 60px);
+    @include container(587px);
+    left: 30px;
+    top: 413px;
+
+    &.active{
+        opacity:1;
+    }
+
+    &>span{
+        height: 18px;
+        width: 2px;
+        display: block;
+        float: left;
+        animation: loader-animation-small 1.2s infinite ease-in-out;
+        margin: 0;
+        background: #414141;
+    }
+
+    span:nth-child(2) {
+        animation-delay: -1s;
+        margin: 0 4px;
+    }
+    
+    span:nth-child(3) {
+        animation-delay: -0.8s;
+    }
+
+
+}
+
+.loader-button-container{
+    right: 30px;
+    top: 1030px;
+    position:absolute;
+    z-index:2;
+    cursor:pointer;
+    background: $acce2;
+    @extend %hightlited-text;
+    padding-left:30px;
+    padding-right:30px;
+    line-height: 32px;
+    height:32px;
+    color:white;
+    
+    &:hover{
+        background-color: $acce2h;
+    }
+
+    &.global{
+        z-index:0;
+    }
+
+    &:active{
+        line-height:33px;
+    }
+
+    &.active{
+        color:transparent;
+
+        .loader-button {
+            opacity:1;
+        }
+    }
+
+
+    .loader-button {
+        width: 100%;
+        @include container(32px);
+        bottom:0px;
+        background-color: transparent;
+        left:0px;
+        transition: opacity 0s linear;
+
+        &:active{
+            top:1px;
+        }
+
+        & > span{   
+            height: 16px;
+            width: 2px;
+            display: block;
+            float: left;
+            animation: loader-animation 1.2s infinite ease-in-out;
+            background: #fff;
+        }
+    
+        span:nth-child(2){
+            animation-delay: -1s;
+            margin: 0 3px;
+        }
+    
+        span:nth-child(3){
+            animation-delay: -0.8s;
+        }
+        
+    }
+}
+
+
+@keyframes loader-animation-color {
+    0% {
+        background-color: #cc0000;
+        transform: scaleY(1);
+     }
+  
+     50% {
+           background-color: #414141;
+           transform: scaleY(0.47);
+     }
+  
+     100% {
+        background-color: #cc0000;
+        transform: scaleY(1);
+     }
+  }
+
+  @keyframes loader-animation-small {
+    0% {
+          transform: scaleY(1);
+     }
+  
+     50% {
+           transform: scaleY(0.33);
+     }
+  
+     100% {
+           transform: scaleY(1);
+     }
+  }
+
+  @keyframes loader-animation {
+   
+    0% {
+          transform: scaleY(1);
+     }
+  
+     50% {
+           transform: scaleY(0.3);
+     }
+  
+     100% {
+           transform: scaleY(1);
+     }
+  }
