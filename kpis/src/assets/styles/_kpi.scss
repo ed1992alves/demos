@@ -1,0 +1,214 @@
+/*********************************************** FILTERS **************************************************/
+
+
+@mixin arrow_border($color, $opacity, $width, $height, $transform) {
+    border: 2px solid $color;
+    border-right:0px;
+    border-bottom:0px;
+    opacity: $opacity;
+    width:$width;
+    height:$height;
+    transform:$transform;
+  }
+
+@mixin transition_opacity ($opacity, $transition){
+    transition: $transition;
+    opacity: $opacity;
+}
+
+
+#kpi{
+    padding-top:30px;
+    padding-bottom:30px;
+    padding-left:30px;
+    display:inline-grid;
+
+    .title{
+        font-size:12px;
+        margin-bottom:16px;
+        font-weight:600;
+    }
+
+    .info{
+        display:flex; 
+        align-items:center;
+        margin-bottom:10px;
+
+        .icon{
+            height:19px;
+            width:41px;
+            margin-right:10px;
+            display:inline-block;
+            transition: 0.4s all linear;
+
+            &.loading{
+                width:0px;
+                margin-right:51px;
+                transition:0s;
+            }
+
+            &.negative{
+                background: url('./assets/images/timeline_down.svg');
+            }
+
+            &.positive{
+                background: url('./assets/images/timeline_up.svg');
+            }
+        }
+
+        .value{
+            font-size:32px;
+            font-weight:600;
+            line-height:32px;
+            margin-right:10px;
+            @include transition_opacity(1, 0s all linear);
+
+            &.loading{
+                @include transition_opacity(0, 0s);
+            }
+        }
+
+        .units{
+            align-self: flex-end;
+            font-size:12px;
+            @include transition_opacity(1, 0s all linear);
+
+            &.loading{
+                @include transition_opacity(0, 0s);
+            }
+        }
+    }
+
+    .relative{
+        display:flex;
+        align-items:center;
+
+        .value{
+            font-size:14px;
+            font-weight:600;
+            color: $color-atmo7;
+            margin-right:10px;
+            @include transition_opacity(1, 0.5s opacity linear);
+
+            &.loading{
+                color: $color-atmo7;
+                @include transition_opacity(0, 0s);
+            }
+        }
+
+        .units{
+            font-size:10px;
+            align-self: flex-end;
+            @include transition_opacity(1, 0s opacity linear);
+
+            &.loading{
+                @include transition_opacity(0, 0s);
+            }
+        }
+
+        .icon{
+
+            position:relative;
+            width:12px;
+            height:9px;
+            margin-right:10px;
+            
+            &:after{
+                content:"";
+                position:absolute; 
+                left:5px;
+            }
+
+            &:before{
+                content:"";
+                position:absolute; 
+                left:2px;
+            }
+        }
+
+
+        &.positive {
+
+            .value{
+                color:$color-green;
+            }      
+
+            .icon{
+
+                &.loading{
+
+                    &:after{
+                        @include arrow_border($color-green,0,0px,0px, rotate(0deg));
+                        transition:0s;
+                    }
+
+                    &:before{
+                        top:8px;
+                        @include arrow_border($color-green,0, 0px,0px, rotate(45deg));
+                        transition:0s;
+                    }
+                }
+
+                &:after
+                {
+                    @include arrow_border($color-green,1,0px,9px, rotate(0deg));
+                    transition: 0.5s height linear;
+                    bottom:-2px;
+                }
+
+                &:before{
+                    @include arrow_border($color-green,1, 6px,6px, rotate(45deg));
+                    transition: 0.5s top linear;
+                    top:0px;
+                }
+
+            }
+
+        }
+
+        &.negative {
+            
+            .value{
+                color: $color-red;
+            }
+
+            .icon
+            {
+                &.loading{
+
+                    &:after{
+                        @include arrow_border($color-red,0,0px,0px, rotate(0deg));
+                        transition:0s;
+                    }
+
+
+                    &:before{
+                        top:-7px;
+                        @include arrow_border($color-red,0,0px,0px, rotate(225deg));
+                        transition:0s;
+                    }
+                    
+                }
+
+                &:after, 
+                {
+                    @include arrow_border($color-red,1, 0px, 9px, rotate(0deg));
+                    transition: 0.5s height linear;
+                    top:-2px;
+                }
+    
+                &:before{
+                    top:1px;
+                    @include arrow_border($color-red,1, 6px, 6px, rotate(225deg));
+                    transition: 0.5s top linear;
+                }
+            }  
+           
+        }
+
+    }
+    
+}
+
+
+
