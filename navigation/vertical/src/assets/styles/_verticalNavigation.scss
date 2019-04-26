@@ -1,0 +1,101 @@
+.vertical_navigation{
+    height:calc(100% - 60px); 
+    position:absolute; 
+    top: 45px; 
+    bottom:0px;
+    left:5px; 
+    background-color:white;
+    max-width:240px;
+
+    ul{
+        list-style-type: none;
+        width:auto;
+        padding-right:20px;
+        padding-left:10px;
+        padding-top:30px;
+
+        li{
+            line-height: 32px;
+            height:32px;
+            margin-bottom:8px;
+            padding-right:30px;
+            position:relative;
+            z-index:1;
+            cursor:default;
+            text-indent:32px;
+            @extend %prevent_copies;
+            letter-spacing:0.02em;
+            transition: color 0.1s cubic-bezier(0,0,1,.44);
+
+            object{
+                position:absolute; 
+                top:0px;
+                left:0px;
+                z-index:-1;
+            }
+
+            &.highlighting:before{
+                opacity:0.4;
+                content:""; 
+                position:absolute;
+                top:0px;
+                bottom:0px;
+                left:0px;
+                right:0px;
+                z-index:2;
+                background-color: $color-light-blue; 
+            }
+
+            &:hover{
+                background-color: $color-atmo3;
+            }
+
+            &.selected{
+                color: $color-atmo1;
+                transition: all 0.2s cubic-bezier(0,0,1,.44);
+                text-shadow: -0.2px 0 #f9f9f9, 0.2px 0 #f9f9f9;
+
+                path{
+                    fill:white !important;
+                }
+            }
+
+            &:not(.selected).press{
+                line-height:33px;
+
+                object{
+                    top:1px;
+                }
+
+            }
+
+            &:after{
+                transition: opacity 0.1s cubic-bezier(0,0,1,.44);
+                position:absolute; 
+                top:0px; 
+                bottom:0px;
+                left:0px; 
+                width:100%; 
+                content:"";
+                z-index:-2;
+                background-color: $color-atmo7;
+                opacity:0;
+            }
+
+            &.selected:after{
+                opacity:1;
+                transition: opacity 0.2s cubic-bezier(0,0,1,.44);
+            }
+
+            &:not(.selected):hover{
+                cursor:pointer;
+            }
+
+            img{
+                position: absolute;
+                top: 4px;
+                left: 0px;
+            }
+        }
+    }
+}
